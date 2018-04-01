@@ -19,7 +19,7 @@ function index(req,res){
 
 function list(req, res){
     Business.find({})
-        .sort('year')
+        .populate('client')
         .exec(function(err,data){
         if(err){
             res.status(500).send({message:err})

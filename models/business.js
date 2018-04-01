@@ -26,9 +26,16 @@ var BusinessSchema = new Schema({
         }
     },
     status:{
-        type:Schema.ObjectId,
-        ref:'Status',
-        required:'Insert a status please'
+        type:String,
+        trim:true,
+        default:'Contacted',
+        enum:[
+            'Contacted',
+            'In Progress',
+            'Won',
+            'Lost',
+            'Pending approval'
+        ]
     }
 },
     {
