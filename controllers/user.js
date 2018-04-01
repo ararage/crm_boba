@@ -4,7 +4,7 @@ var User = require('../models/user')
 var mongoose = require('mongoose')
 
 function index(req,res){
-    Client.findById(req.params.id,function(err,data){
+    User.findById(req.params.id,function(err,data){
         if(err){
             res.status(500).send({message:err})
         }else{
@@ -18,7 +18,7 @@ function index(req,res){
 }
 
 function list(req, res){
-    Client.find({})
+    User.find({})
         .sort('year')
         .exec(function(err,data){
         if(err){
@@ -30,8 +30,8 @@ function list(req, res){
 }
 
 function store(req,res){
-    var client = new Client(req.body)
-    client.save(function(err,data){
+    var user = new User(req.body)
+    user.save(function(err,data){
         if(err){
             res.status(500).send({message:err})
         }else{
@@ -41,10 +41,10 @@ function store(req,res){
 }
 
 function update(req,res){
-    var client_id = req.params.id
-    if(client_id && mongoose.Types.ObjectId.isValid(client_id)){
-        Client.findByIdAndUpdate(
-            client_id,
+    var user_id = req.params.id
+    if(user_id && mongoose.Types.ObjectId.isValid(user_id)){
+        User.findByIdAndUpdate(
+            user_id,
             req.body,
             {new:true},
             function(err,data){
@@ -65,9 +65,9 @@ function update(req,res){
 }
 
 function delete_(req,res){
-    var client_id = req.params.id
-    if(client_id && mongoose.Types.ObjectId.isValid(client_id)){
-        Client.findByIdAndRemove(client_id,function(err,data){
+    var user_id = req.params.id
+    if(user_id && mongoose.Types.ObjectId.isValid(user_id)){
+        User.findByIdAndRemove(user_id,function(err,data){
             if(err){
                 res.status(500).send({message:err})
             }else{
