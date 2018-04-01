@@ -9,10 +9,6 @@ var client = require('./routes/client')
 var business = require('./routes/business')
 var user = require('./routes/user')
 
-var year = require('./routes/year')
-
-var version = require('./routes/version')
-
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
